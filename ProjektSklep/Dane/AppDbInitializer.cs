@@ -18,9 +18,10 @@ namespace ProjektSklep.Dane
                 context.Database.EnsureCreated();
 
                 //Kolorystyki
-                if(!context.Kolorystyki.Any())
-                {
-                    context.Kolorystyki.AddRange(new List<Kolorystyka>()
+                //if(!context.Kolorystyki.Any())
+                //{
+                    //context.Kolorystyki.AddRange(new List<Kolorystyka>()
+                    ICollection<Kolorystyka> Kolorystyki = new List<Kolorystyka>()
                     {
                         new Kolorystyka()
                         {
@@ -42,14 +43,15 @@ namespace ProjektSklep.Dane
                             Nazwa = "White",
                             Opis = "White"
                         }
-
-                    });
+                    };
+                    //});
                     context.SaveChanges();
-                }
+                //}
                 //Producenci
-                if (!context.Producenci.Any())
-                {
-                    context.Producenci.AddRange(new List<Producent>()
+                //if (!context.Producenci.Any())
+                //{
+                    //context.Producenci.AddRange(new List<Producent>()
+                    ICollection<Producent> Producenci = new List<Producent>()
                     {
                         new Producent()
                         {
@@ -75,24 +77,26 @@ namespace ProjektSklep.Dane
                             Opis = "White",
                             Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Flogos-download.com%2F11496-y-3-logo-download.html&psig=AOvVaw0TDKmS0tsedAYLViQs09kD&ust=1643145782946000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiRtJipy_UCFQAAAAAdAAAAABAD"
                         }
+                    };
+                    //});
+                   //context.SaveChanges();
 
-                    });
-                    context.SaveChanges();
 
-
-                }
+                //}
                 //Buty
-                if (!context.Buty.Any())
-                {
-                    context.Buty.AddRange(new List<But>()
-                    {
+                //if (!context.Buty.Any())
+                //{
+                    //context.Buty.AddRange(new List<But>()
+                    //{
+                    ICollection<But> Buty = new List<But>()
+                        {
                         new But()
                         {
                             Nazwa = "Yeezy 500",
                             Opis = "500",
                             Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenisufki.eu%2Fartykul%2Fna-30-listopada-zapowiedziany-jest-restock-adidas-yeezy-500-utility-black&psig=AOvVaw0D-o9sZp2vOc5kl0IALgPb&ust=1643147010715000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMiYsuGty_UCFQAAAAAdAAAAABAD",
                             Cena = 849,
-                            KategoriaButa = KategoriaButa.Lifestyle
+                            kategoriaButa = KategoriaButa.Lifestyle
                         },
                         new But()
                         {
@@ -100,7 +104,7 @@ namespace ProjektSklep.Dane
                             Opis = "95",
                             Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsneakerstudio.pl%2Fproduct-pol-14374-Buty-meskie-sneakersy-Nike-Air-Max-95-Triple-Black-609048-092.html&psig=AOvVaw1b4QC6Qa_CdQW_x5wbgqmC&ust=1643147145286000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOjUj6Guy_UCFQAAAAAdAAAAABAQ",
                             Cena = 799,
-                            KategoriaButa = KategoriaButa.Sportowe
+                            kategoriaButa = KategoriaButa.Sportowe
                         },
                         new But()
                         {
@@ -108,7 +112,7 @@ namespace ProjektSklep.Dane
                             Opis = "350",
                             Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fallegro.pl%2Foferta%2Fadidas-yeezy-boost-350-v2-zebra-43-1-3-11380438707&psig=AOvVaw3zh3PVTG4gE8gB0hXFZICr&ust=1643147309001000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV6vCuy_UCFQAAAAAdAAAAABAD",
                             Cena = 899,
-                            KategoriaButa = KategoriaButa.Lifestyle
+                            kategoriaButa = KategoriaButa.Lifestyle
                         },
                         new But()
                         {
@@ -116,10 +120,57 @@ namespace ProjektSklep.Dane
                             Opis = "1",
                             Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fpl%2Flaunch%2Ft%2Fwomens-air-jordan-1-satin-red1&psig=AOvVaw3R7SCDbcsh2hvbfjKod4LR&ust=1643147415790000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPDRiKWvy_UCFQAAAAAdAAAAABAD",
                             Cena = 649,
-                            KategoriaButa = KategoriaButa.Lifestyle
+                            kategoriaButa = KategoriaButa.Lifestyle
                         }
 
-                    });
+                        };
+                //}
+                    //});
+
+                    foreach (Kolorystyka kolorystyka in Kolorystyki)
+                    {
+
+                        context.Kolorystyki.Add(kolorystyka);
+
+                    }
+
+                    foreach (Producent producent in Producenci)
+                    {
+
+                        context.Producenci.Add(producent);
+
+                    }
+
+                    
+
+                    foreach (But but in Buty)
+                    {
+                        if(but.Nazwa == "Yeezy 500")
+                        {
+                        but.Producent=Producenci.Where(x => x.NazwaProducenta.Equals("Adidas")).First();
+                        }
+                        if (but.Nazwa == "Air Max 95")
+                        {
+                        but.Producent = Producenci.Where(x => x.NazwaProducenta.Equals("Nike")).First();
+                        }
+                        if (but.Nazwa == "Yeezy 350 v2")
+                        {
+                        but.Producent = Producenci.Where(x => x.NazwaProducenta.Equals("Yeezy")).First();
+                        }
+                        if (but.Nazwa == "Air Jordan 1")
+                        {
+                        but.Producent = Producenci.Where(x => x.NazwaProducenta.Equals("Nike")).First();
+                        }
+
+                    foreach (Kolorystyka kolorystyka in Kolorystyki)
+                        {
+                        but.Kolorystyka.Add(kolorystyka);
+                        }
+                        
+                        context.Buty.Add(but);
+
+                    }
+                    
                     context.SaveChanges(); 
                    
                 }
@@ -128,4 +179,4 @@ namespace ProjektSklep.Dane
             }
         }
     }
-}
+
