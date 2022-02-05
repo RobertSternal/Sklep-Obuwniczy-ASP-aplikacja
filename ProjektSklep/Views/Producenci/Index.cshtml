@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Kolorystyka>
+﻿@model IEnumerable<Producent>
 
 @{
-    ViewData["Title"] = "Lista Kolorystyk";
+    ViewData["Title"] = "Lista Producentów";
 }
 
 <div class="row">
@@ -10,7 +10,8 @@
         <table class="table">
             <thead>
                 <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.Nazwa)</th>
+                    <th>@Html.DisplayNameFor(model => model.Logo)</th>
+                    <th>@Html.DisplayNameFor(model => model.NazwaProducenta)</th>
                     <th>@Html.DisplayNameFor(model => model.Opis)</th>
                     <th>Actions</th>
                 </tr>
@@ -20,7 +21,10 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Nazwa)
+                            <img class="rounded-circle" src="@item.Logo" alt="@item.NazwaProducenta" style="max-width: 150px"/>
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.NazwaProducenta)
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Opis)
@@ -37,9 +41,4 @@
             
         </table>     
     </div>
-</div>
-
-<div style="position: fixed; right: 25px; bottom: 25px;"class="text-white">
-    <a asp-controller="Kolorystyki" asp-action="Create" class="btn-primary btn-success"> 
-        <i class="bi bi-plus-circle"></i> Dodaj nową</a>
 </div>

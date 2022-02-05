@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjektSklep.Dane;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjektSklep.Controllers
@@ -16,8 +17,8 @@ namespace ProjektSklep.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Buty.ToListAsync();
-            return View();
+            var allButy = await _context.Buty.OrderBy(n => n.Nazwa).ToListAsync();
+            return View(allButy);
         }
     }
 }

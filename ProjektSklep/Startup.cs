@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjektSklep.Dane;
+using ProjektSklep.Dane.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,11 @@ namespace ProjektSklep
 
             //DBContext configuration
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnetionString")));
+
+
+            //Service Configuration
+            services.AddScoped<IKolorystykiService, KolorystykiService>();
+
             services.AddControllersWithViews();
         }
 

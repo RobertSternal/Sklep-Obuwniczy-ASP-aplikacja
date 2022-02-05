@@ -94,7 +94,7 @@ namespace ProjektSklep.Dane
                         {
                             Nazwa = "Yeezy 500",
                             Opis = "500",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenisufki.eu%2Fartykul%2Fna-30-listopada-zapowiedziany-jest-restock-adidas-yeezy-500-utility-black&psig=AOvVaw0D-o9sZp2vOc5kl0IALgPb&ust=1643147010715000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMiYsuGty_UCFQAAAAAdAAAAABAD",
+                            Logo = "https://cdn-images.farfetch-contents.com/13/49/74/92/13497492_21554204_480.jpg",
                             Cena = 849,
                             kategoriaButa = KategoriaButa.Lifestyle
                         },
@@ -102,7 +102,7 @@ namespace ProjektSklep.Dane
                         {
                             Nazwa = "Air Max 95",
                             Opis = "95",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsneakerstudio.pl%2Fproduct-pol-14374-Buty-meskie-sneakersy-Nike-Air-Max-95-Triple-Black-609048-092.html&psig=AOvVaw1b4QC6Qa_CdQW_x5wbgqmC&ust=1643147145286000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOjUj6Guy_UCFQAAAAAdAAAAABAQ",
+                            Logo = "https://sneakerstudio.pl/pol_pm_Buty-meskie-sneakersy-Nike-Air-Max-95-Triple-Black-609048-092-14374_4.jpg",
                             Cena = 799,
                             kategoriaButa = KategoriaButa.Sportowe
                         },
@@ -110,7 +110,7 @@ namespace ProjektSklep.Dane
                         {
                             Nazwa = "Yeezy 350 v2",
                             Opis = "350",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fallegro.pl%2Foferta%2Fadidas-yeezy-boost-350-v2-zebra-43-1-3-11380438707&psig=AOvVaw3zh3PVTG4gE8gB0hXFZICr&ust=1643147309001000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV6vCuy_UCFQAAAAAdAAAAABAD",
+                            Logo = "https://cdn.vitkac.com/uploads/gallery_AdidasSoldout9/66bf85054bcf00206b9e5d5e93caa661.png",
                             Cena = 899,
                             kategoriaButa = KategoriaButa.Lifestyle
                         },
@@ -118,7 +118,7 @@ namespace ProjektSklep.Dane
                         {
                             Nazwa = "Air Jordan 1",
                             Opis = "1",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fpl%2Flaunch%2Ft%2Fwomens-air-jordan-1-satin-red1&psig=AOvVaw3R7SCDbcsh2hvbfjKod4LR&ust=1643147415790000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPDRiKWvy_UCFQAAAAAdAAAAABAD",
+                            Logo = "https://houseofheat.co/app/uploads/2021/01/air-jordan-1-high-og-university-blue-2021-555088-134-release-date.jpg",
                             Cena = 649,
                             kategoriaButa = KategoriaButa.Lifestyle
                         }
@@ -131,14 +131,12 @@ namespace ProjektSklep.Dane
                     {
 
                         context.Kolorystyki.Add(kolorystyka);
-
                     }
 
                     foreach (Producent producent in Producenci)
                     {
 
                         context.Producenci.Add(producent);
-
                     }
 
                     
@@ -173,7 +171,7 @@ namespace ProjektSklep.Dane
                     
                     context.SaveChanges(); 
                    
-                }
+               }
                 //Buty & Kolorystyki
                 
             }
