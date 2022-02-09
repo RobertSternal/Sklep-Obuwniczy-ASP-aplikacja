@@ -6,12 +6,12 @@ namespace ProjektSklep.Dane.Services
 {
     public interface IKolorystykiService
     {
-        Task<IEnumerable<Kolorystyka>> GetAll();
-        Kolorystyka GetById(int id);
-        void Add(Kolorystyka kolorystyka);
+        Task<IEnumerable<Kolorystyka>> GetAllAsync();
+        Task<Kolorystyka> GetByIdAsync(int id);
+        Task AddAsync(Kolorystyka kolorystyka);
 
-        Kolorystyka Update(int id, Kolorystyka newKolorystyka);
-        void Delete(int id);
+        Task<Kolorystyka> UpdateAsync(int id, Kolorystyka newKolorystyka);
+        Task DeleteAsync(int id);
 
 
 

@@ -16,31 +16,37 @@ namespace ProjektSklep.Dane.Services
             _context = context;
         }
 
-        public void Add(Kolorystyka kolorystyka)
+        public async Task AddAsync(Kolorystyka kolorystyka)
         {
-            _context.Kolorystyki.Add(kolorystyka);
-            _context.SaveChanges();
+            await _context.Kolorystyki.AddAsync(kolorystyka);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _context.Kolorystyki.FirstOrDefaultAsync(n => n.KolorystykaId == id);
+            _context.Kolorystyki.Remove(result);
+            await _context.SaveChangesAsync();
+
         }
 
-        public async Task<IEnumerable<Kolorystyka>> GetAll()
+        public async Task<IEnumerable<Kolorystyka>> GetAllAsync()
         {
             var result = await _context.Kolorystyki.ToListAsync();
             return result;
         }
 
-        public Kolorystyka GetById(int id)
+        public async Task<Kolorystyka> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _context.Kolorystyki.FirstOrDefaultAsync(n => n.KolorystykaId == id);   
+            return result;
         }
 
-        public Kolorystyka Update(int id, Kolorystyka newKolorystyka)
+        public async Task<Kolorystyka> UpdateAsync(int id, Kolorystyka newKolorystyka)
         {
-            throw new System.NotImplementedException();
+            _context.Update(newKolorystyka);
+            await _context.SaveChangesAsync();
+            return newKolorystyka;
         }
     }
 }

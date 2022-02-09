@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjektSklep.Models;
 
 
 namespace ProjektSklep.Dane
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -20,6 +22,8 @@ namespace ProjektSklep.Dane
             modelBuilder.Entity<Kolorystyka>().ToTable("Kolorystyki");
             modelBuilder.Entity<But>().ToTable("Buty");
             modelBuilder.Entity<Producent>().ToTable("Producenci");
+
+            base.OnModelCreating(modelBuilder);
 
         }
 

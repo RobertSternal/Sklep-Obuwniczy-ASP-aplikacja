@@ -1,12 +1,15 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjektSklep.Dane;
 using ProjektSklep.Dane.Services;
+using ProjektSklep.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +38,15 @@ namespace ProjektSklep
             services.AddScoped<IKolorystykiService, KolorystykiService>();
 
             services.AddControllersWithViews();
+
+            //Authentication and authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +67,12 @@ namespace ProjektSklep
 
             app.UseRouting();
 
+            app.UseSession();
+
+            //Authentication & Authorization
+            app.UseAuthentication();
             app.UseAuthorization();
+ 
 
             app.UseEndpoints(endpoints =>
             {
@@ -66,6 +83,7 @@ namespace ProjektSklep
 
             //Seed database
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }

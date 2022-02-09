@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using ProjektSklep.Dane.Static;
 using ProjektSklep.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using static ProjektSklep.Models.But;
 
 namespace ProjektSklep.Dane
@@ -57,25 +60,25 @@ namespace ProjektSklep.Dane
                         {
                             NazwaProducenta = "Adidas",
                             Opis = "Black/Red",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.logaster.com%2Fpl%2Fblog%2Fadidas-logo%2F&psig=AOvVaw0FQJd-a7CNoc38lhl4a83F&ust=1643145310973000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLiHrrany_UCFQAAAAAdAAAAABAJ"
+                            Logo = "https://w7.pngwing.com/pngs/488/478/png-transparent-adidas-originals-t-shirt-logo-brand-adidas-angle-text-retail.png"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Nike",
                             Opis = "White/Black/Red",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSwoosh&psig=AOvVaw3dnGmhQhcECuCbgJqG9ITV&ust=1643145391292000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMC4gOCny_UCFQAAAAAdAAAAABAD"
+                            Logo = "https://c.static-nike.com/a/images/w_1920,c_limit/mdbgldn6yg1gg88jomci/image.jpg"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Yeezy",
                             Opis = "Black",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.logomyway.com%2Fyeezy-logo%2F&psig=AOvVaw2idqMZgj6xdAhsw_rGZ2Et&ust=1643145444824000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMCIy_any_UCFQAAAAAdAAAAABAD"
+                            Logo = "https://wallpaperaccess.com/full/633432.jpg"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Y-3",
                             Opis = "White",
-                            Logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Flogos-download.com%2F11496-y-3-logo-download.html&psig=AOvVaw0TDKmS0tsedAYLViQs09kD&ust=1643145782946000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiRtJipy_UCFQAAAAAdAAAAABAD"
+                            Logo = "https://mdc.rinascente.it/media/aw_sbb/brand/Y3-ss21.png"
                         }
                     };
                     //});
@@ -175,6 +178,57 @@ namespace ProjektSklep.Dane
                 //Buty & Kolorystyki
                 
             }
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                string adminUserEmail = "admin@shop.com";
+
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new ApplicationUser()
+                    {
+                        FullName = "Admin User",
+                        UserName = "admin-user",
+                        Email = adminUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAdminUser, "Yeezy123!");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
+
+
+                string appUserEmail = "user@shop.com";
+
+                var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                if (appUser == null)
+                {
+                    var newAppUser = new ApplicationUser()
+                    {
+                        FullName = "Application User",
+                        UserName = "app-user",
+                        Email = appUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAppUser, "Yeezy123!");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
+            }
         }
+
+    }
+
     }
 
