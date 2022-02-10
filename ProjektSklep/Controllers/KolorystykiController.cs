@@ -18,7 +18,7 @@ namespace ProjektSklep.Controllers
         {
             _service = service;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             //var data = _context.Kolorystyki.ToList();
@@ -45,6 +45,7 @@ namespace ProjektSklep.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
         //Get: Kolorystyki/Szczegóły
         public async Task<IActionResult> Details(int id)
         {

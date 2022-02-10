@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjektSklep.Controllers
 {
+
     [Authorize(Roles = UserRoles.Admin)]
     public class ButyController : Controller
     {
@@ -17,11 +18,22 @@ namespace ProjektSklep.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allButy = await _context.Buty.OrderBy(n => n.Nazwa).ToListAsync();
             return View(allButy);
         }
+
+       /* [AllowAnonymous]
+        //Get: Buty/Szczegóły
+        public async Task<IActionResult> Details(int id)
+        {
+            var kolorystykaDetails = await _service.GetByIdAsync(id);
+
+            if (kolorystykaDetails == null) return View("NotFound");
+            return View(kolorystykaDetails);
+        }
+       */
     }
 }

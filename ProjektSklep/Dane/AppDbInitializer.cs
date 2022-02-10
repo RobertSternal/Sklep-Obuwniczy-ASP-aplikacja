@@ -59,25 +59,25 @@ namespace ProjektSklep.Dane
                         new Producent()
                         {
                             NazwaProducenta = "Adidas",
-                            Opis = "Black/Red",
+                            Opis = "Adidas Originals",
                             Logo = "https://w7.pngwing.com/pngs/488/478/png-transparent-adidas-originals-t-shirt-logo-brand-adidas-angle-text-retail.png"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Nike",
-                            Opis = "White/Black/Red",
+                            Opis = "Nike Sportswear",
                             Logo = "https://c.static-nike.com/a/images/w_1920,c_limit/mdbgldn6yg1gg88jomci/image.jpg"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Yeezy",
-                            Opis = "Black",
+                            Opis = " Adidas YEEZY",
                             Logo = "https://wallpaperaccess.com/full/633432.jpg"
                         },
                         new Producent()
                         {
                             NazwaProducenta = "Y-3",
-                            Opis = "White",
+                            Opis = "Adidas Y-3",
                             Logo = "https://mdc.rinascente.it/media/aw_sbb/brand/Y3-ss21.png"
                         }
                     };
@@ -96,15 +96,15 @@ namespace ProjektSklep.Dane
                         new But()
                         {
                             Nazwa = "Yeezy 500",
-                            Opis = "500",
-                            Logo = "https://cdn-images.farfetch-contents.com/13/49/74/92/13497492_21554204_480.jpg",
+                            Opis = "Yeezy 500 Salt",
+                            Logo = "https://tenisufki.eu/storage/default/ooFfl6EpqgONuTw8etnPyCAIKusI1jAwCYwS3Di2.jpeg",
                             Cena = 849,
                             kategoriaButa = KategoriaButa.Lifestyle
                         },
                         new But()
                         {
                             Nazwa = "Air Max 95",
-                            Opis = "95",
+                            Opis = "Air max 95 black",
                             Logo = "https://sneakerstudio.pl/pol_pm_Buty-meskie-sneakersy-Nike-Air-Max-95-Triple-Black-609048-092-14374_4.jpg",
                             Cena = 799,
                             kategoriaButa = KategoriaButa.Sportowe
@@ -112,7 +112,7 @@ namespace ProjektSklep.Dane
                         new But()
                         {
                             Nazwa = "Yeezy 350 v2",
-                            Opis = "350",
+                            Opis = "Yeezy 350 v2 Zebra",
                             Logo = "https://cdn.vitkac.com/uploads/gallery_AdidasSoldout9/66bf85054bcf00206b9e5d5e93caa661.png",
                             Cena = 899,
                             kategoriaButa = KategoriaButa.Lifestyle
@@ -120,9 +120,25 @@ namespace ProjektSklep.Dane
                         new But()
                         {
                             Nazwa = "Air Jordan 1",
-                            Opis = "1",
+                            Opis = "Air Jordan 1 High UNC",
                             Logo = "https://houseofheat.co/app/uploads/2021/01/air-jordan-1-high-og-university-blue-2021-555088-134-release-date.jpg",
-                            Cena = 649,
+                            Cena = 679,
+                            kategoriaButa = KategoriaButa.Lifestyle
+                        },
+                        new But()
+                        {
+                            Nazwa = "Yeezy 350 v2",
+                            Opis = "Yeezy 350 v2 Bred",
+                            Logo = "https://happybyhype.eu/userdata/public/gfx/1507.png",
+                            Cena = 899,
+                            kategoriaButa = KategoriaButa.Lifestyle
+                        },
+                        new But()
+                        {
+                            Nazwa = "Air Jordan 1",
+                            Opis = "Air Jordan 1 High Bred",
+                            Logo = "https://tenisufki.eu/storage/default/old/media/kcfinder/images/Air-Jordan-1-Bred-Toe-555088-610-Release-Date.jpg",
+                            Cena = 679,
                             kategoriaButa = KategoriaButa.Lifestyle
                         }
 

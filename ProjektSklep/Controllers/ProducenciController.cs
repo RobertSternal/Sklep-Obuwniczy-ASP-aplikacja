@@ -17,7 +17,7 @@ namespace ProjektSklep.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducenci = await _context.Producenci.ToListAsync();
