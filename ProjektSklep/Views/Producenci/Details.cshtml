@@ -1,0 +1,46 @@
+﻿@model Producent
+
+@{
+    ViewData["Title"] = "Dodaj nowego Producenta";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Szczegóły @Model.NazwaProducenta</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                    
+
+
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview"  class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>
+                   
+                    <div class="form-group">
+                        <label asp-for="Logo" class="control-label"></label>
+                        <input asp-for="Logo" class="form-control" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NazwaProducenta" class="control-label"></label>
+                        <input asp-for="NazwaProducenta" class="form-control" readonly/>
+                        <span asp-validation-for="NazwaProducenta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Opis" class="control-label"></label>
+                        <input asp-for="Opis" class="form-control" readonly/>
+                        <span asp-validation-for="Opis" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <a class="btn btn-outline-success float-right" asp-action="Edytuj" asp-route-id="@Model.ProducentId">Edytuj</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Pokaż wszystkie</a>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
